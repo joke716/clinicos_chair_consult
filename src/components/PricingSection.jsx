@@ -6,25 +6,70 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.09 } } }
 const item = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
 
-const packageRows = [
-  { chair: '3', monitor: '29만 원', consult: '50만 원', sum: '79만 원', regular: '69만 원', special: '59만 원' },
-  { chair: '4', monitor: '32만 원', consult: '50만 원', sum: '82만 원', regular: '72만 원', special: '62만 원' },
-  { chair: '5', monitor: '35만 원', consult: '50만 원', sum: '85만 원', regular: '75만 원', special: '65만 원' },
-  { chair: '6', monitor: '38만 원', consult: '50만 원', sum: '88만 원', regular: '78만 원', special: '68만 원' },
-  { chair: '7', monitor: '41만 원', consult: '50만 원', sum: '91만 원', regular: '81만 원', special: '71만 원' },
-  { chair: '8', monitor: '44만 원', consult: '50만 원', sum: '94만 원', regular: '84만 원', special: '74만 원' },
-]
+const PKG_ROWS = {
+  ko: [
+    { chair: '3', monitor: '29만 원', consult: '50만 원', sum: '79만 원', regular: '69만 원', special: '59만 원' },
+    { chair: '4', monitor: '32만 원', consult: '50만 원', sum: '82만 원', regular: '72만 원', special: '62만 원' },
+    { chair: '5', monitor: '35만 원', consult: '50만 원', sum: '85만 원', regular: '75만 원', special: '65만 원' },
+    { chair: '6', monitor: '38만 원', consult: '50만 원', sum: '88만 원', regular: '78만 원', special: '68만 원' },
+    { chair: '7', monitor: '41만 원', consult: '50만 원', sum: '91만 원', regular: '81만 원', special: '71만 원' },
+    { chair: '8', monitor: '44만 원', consult: '50만 원', sum: '94만 원', regular: '84만 원', special: '74만 원' },
+  ],
+  en: [
+    { chair: '3', monitor: '$220', consult: '$375', sum: '$595', regular: '$520', special: '$450' },
+    { chair: '4', monitor: '$240', consult: '$375', sum: '$615', regular: '$540', special: '$465' },
+    { chair: '5', monitor: '$265', consult: '$375', sum: '$640', regular: '$565', special: '$490' },
+    { chair: '6', monitor: '$285', consult: '$375', sum: '$660', regular: '$585', special: '$510' },
+    { chair: '7', monitor: '$310', consult: '$375', sum: '$685', regular: '$605', special: '$530' },
+    { chair: '8', monitor: '$330', consult: '$375', sum: '$705', regular: '$625', special: '$555' },
+  ],
+  ja: [
+    { chair: '3', monitor: '¥32,000', consult: '¥55,000', sum: '¥87,000', regular: '¥76,000', special: '¥65,000' },
+    { chair: '4', monitor: '¥35,000', consult: '¥55,000', sum: '¥90,000', regular: '¥79,000', special: '¥68,000' },
+    { chair: '5', monitor: '¥39,000', consult: '¥55,000', sum: '¥94,000', regular: '¥83,000', special: '¥72,000' },
+    { chair: '6', monitor: '¥42,000', consult: '¥55,000', sum: '¥97,000', regular: '¥86,000', special: '¥75,000' },
+    { chair: '7', monitor: '¥46,000', consult: '¥55,000', sum: '¥101,000', regular: '¥89,000', special: '¥78,000' },
+    { chair: '8', monitor: '¥49,000', consult: '¥55,000', sum: '¥104,000', regular: '¥93,000', special: '¥82,000' },
+  ],
+}
 
-const clinicRows = [
-  ['강남 치과 A', '5', '월 65만 원', '12개월', '상담 전환율 +31%'],
-  ['분당 치과 B', '4', '월 62만 원', '12개월', '설명시간 -40%'],
-  ['홍대 치과 C', '3', '월 59만 원', '12개월', '재방문율 +28%'],
-  ['수원 치과 D', '6', '월 68만 원', '12개월', '전환율 +35%'],
-  ['대구 치과 E', '8', '월 74만 원', '12개월', '리뷰 4.9→5.0'],
-]
+const CLINIC_ROWS = {
+  ko: [
+    ['강남 치과 A', '5', '월 65만 원', '12개월', '상담 전환율 +31%'],
+    ['분당 치과 B', '4', '월 62만 원', '12개월', '설명시간 -40%'],
+    ['홍대 치과 C', '3', '월 59만 원', '12개월', '재방문율 +28%'],
+    ['수원 치과 D', '6', '월 68만 원', '12개월', '전환율 +35%'],
+    ['대구 치과 E', '8', '월 74만 원', '12개월', '리뷰 4.9→5.0'],
+  ],
+  en: [
+    ['Gangnam Clinic A', '5', '$490/mo', '12 months', 'Consult conversion +31%'],
+    ['Bundang Clinic B', '4', '$465/mo', '12 months', 'Explain time -40%'],
+    ['Hongdae Clinic C', '3', '$450/mo', '12 months', 'Return visits +28%'],
+    ['Suwon Clinic D', '6', '$510/mo', '12 months', 'Conversion rate +35%'],
+    ['Daegu Clinic E', '8', '$555/mo', '12 months', 'Rating 4.9→5.0'],
+  ],
+  ja: [
+    ['江南クリニックA', '5', '月¥72,000', '12ヶ月', '相談転換率 +31%'],
+    ['盆唐クリニックB', '4', '月¥68,000', '12ヶ月', '説明時間 -40%'],
+    ['弘大クリニックC', '3', '月¥65,000', '12ヶ月', '再来院率 +28%'],
+    ['水原クリニックD', '6', '月¥75,000', '12ヶ月', '転換率 +35%'],
+    ['大邱クリニックE', '8', '月¥82,000', '12ヶ月', '評価 4.9→5.0'],
+  ],
+}
+
+const EXAMPLE_VALUES = {
+  ko: { e1: '월 35만 원', e2: '월 50만 원', e3: '월 85만 원', e4: '월 75만 원', e5: '월 65만 원', e6: '300만 원', e7: '0원' },
+  en: { e1: '$265/mo', e2: '$375/mo', e3: '$640/mo', e4: '$565/mo', e5: '$490/mo', e6: '$2,250', e7: '$0' },
+  ja: { e1: '月¥39,000', e2: '月¥55,000', e3: '月¥94,000', e4: '月¥83,000', e5: '月¥72,000', e6: '¥330,000', e7: '¥0' },
+}
 
 export default function PricingSection() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language || 'ko').slice(0, 2)
+  const pkgRows = PKG_ROWS[lang] || PKG_ROWS.ko
+  const clinicRows = CLINIC_ROWS[lang] || CLINIC_ROWS.ko
+  const exVal = EXAMPLE_VALUES[lang] || EXAMPLE_VALUES.ko
+
   const [ref1, v1] = useScrollReveal()
   const [ref2, v2] = useScrollReveal()
   const [ref3, v3] = useScrollReveal()
@@ -55,11 +100,11 @@ export default function PricingSection() {
   ]
 
   const exampleRows = [
-    { label: t('pricing.e1'), value: '월 35만 원', highlight: false },
-    { label: t('pricing.e2'), value: '월 50만 원', highlight: false },
-    { label: t('pricing.e3'), value: '월 85만 원', highlight: false },
-    { label: t('pricing.e4'), value: '월 75만 원', highlight: false },
-    { label: t('pricing.e5'), value: '월 65만 원', highlight: true },
+    { label: t('pricing.e1'), value: exVal.e1, highlight: false },
+    { label: t('pricing.e2'), value: exVal.e2, highlight: false },
+    { label: t('pricing.e3'), value: exVal.e3, highlight: false },
+    { label: t('pricing.e4'), value: exVal.e4, highlight: false },
+    { label: t('pricing.e5'), value: exVal.e5, highlight: true },
   ]
 
   const chairLabel = t('pricing.th_chair')
@@ -116,7 +161,7 @@ export default function PricingSection() {
                 </tr>
               </thead>
               <tbody>
-                {packageRows.map((r, i) => (
+                {pkgRows.map((r, i) => (
                   <tr key={i}>
                     <td data-label={t('pricing.th_chair')} style={{ fontWeight: 700, color: 'var(--navy-930)' }}>{r.chair}{chairLabel}</td>
                     <td data-label={t('pricing.th_monitor')}>{r.monitor}</td>
@@ -185,11 +230,11 @@ export default function PricingSection() {
                   ))}
                   <tr>
                     <td style={{ textAlign: 'left', color: 'var(--muted)', fontSize: '13px' }}>{t('pricing.e6')}</td>
-                    <td style={{ color: 'var(--muted)', fontSize: '13px', textDecoration: 'line-through' }}>300만 원</td>
+                    <td style={{ color: 'var(--muted)', fontSize: '13px', textDecoration: 'line-through' }}>{exVal.e6}</td>
                   </tr>
                   <tr className="trHighlight">
                     <td style={{ textAlign: 'left', fontWeight: 700, color: 'var(--green)' }}>{t('pricing.e7')}</td>
-                    <td style={{ fontWeight: 900, color: 'var(--green)', fontSize: '18px' }}>0원</td>
+                    <td style={{ fontWeight: 900, color: 'var(--green)', fontSize: '18px' }}>{exVal.e7}</td>
                   </tr>
                 </tbody>
               </table>
