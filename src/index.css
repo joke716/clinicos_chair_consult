@@ -38,6 +38,30 @@ h1, h2, h3 { font-family: var(--serif); letter-spacing: -0.06em; margin: 0; line
 
 .wrap { width: min(1180px, calc(100% - 42px)); margin: 0 auto; }
 
+/* LANG SWITCHER */
+.langSwitcher {
+  display: flex;
+  gap: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 3px;
+}
+.langBtn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: var(--sans);
+  white-space: nowrap;
+}
+.langBtn:hover { color: #fff; background: rgba(255,255,255,0.12); }
+.langBtnActive { background: var(--gold) !important; color: #1b1300 !important; }
+
 /* NAV */
 .nav {
   position: sticky;
@@ -242,7 +266,7 @@ section { padding: 90px 0; }
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
   gap: 32px;
-  align-items: center;
+  align-items: stretch;
   margin-top: 28px;
 }
 .productBlock.reverse .productText { order: 2; }
@@ -256,10 +280,9 @@ section { padding: 90px 0; }
 }
 .imagePanel img {
   width: 100%;
-  height: 560px;
-  object-fit: cover;
+  height: auto;
+  display: block;
   border-radius: 22px;
-  background: #07111d;
 }
 .productText {
   background: #fff;
@@ -267,6 +290,9 @@ section { padding: 90px 0; }
   border-radius: 28px;
   padding: 34px;
   box-shadow: var(--shadow2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .tag {
   display: inline-flex;
@@ -467,6 +493,103 @@ section { padding: 90px 0; }
   color: rgba(255,255,255,0.48);
 }
 
+/* PRICING CARDS (단품/패키지 선택 카드) */
+.pricingCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 0;
+}
+.pricingCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: var(--shadow2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pricingCard:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.pricingCardEdge {
+  border: 2px solid var(--gold);
+  background: linear-gradient(145deg, #fff, #fdf9ee);
+}
+.pricingCardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--navy-930);
+  color: var(--gold2);
+  font-size: 11px;
+  font-weight: 900;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+.pricingCardTitle {
+  display: block;
+  font-size: 20px;
+  color: var(--navy-930);
+  margin: 8px 0 4px;
+  font-family: var(--serif);
+  letter-spacing: -0.04em;
+}
+.pricingCardPrice {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--green);
+  letter-spacing: -0.04em;
+  margin: 10px 0 2px;
+}
+.pricingCardEdge .pricingCardPrice { color: var(--gold); }
+.pricingCardPriceNote {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.pricingCardDesc {
+  font-size: 13.5px;
+  color: #586470;
+  margin: 0 0 16px;
+  line-height: 1.6;
+  flex: 1;
+}
+.pricingCardPoints {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.pricingCardPoints li {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 13px;
+  color: #44535f;
+  line-height: 1.5;
+}
+.pricingCardPoints li svg { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+.pricingCardEdge .pricingCardPoints li svg { color: var(--gold); }
+
+/* TABLE HIGHLIGHTS */
+.thHighlight { background: var(--gold) !important; color: #1b1300 !important; }
+.tdHighlight { color: var(--green) !important; font-weight: 900 !important; font-size: 15px; }
+.trHighlight td { background: #f0faf6; }
+
+/* TWO COL PRICING */
+.pricingTwoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
 /* PRICING */
 .pricing {
   background: #fff;
@@ -529,6 +652,45 @@ td { font-size: 14px; color: #33404c; }
 tr:last-child td { border-bottom: none; }
 td:first-child { text-align: left; font-weight: 700; color: var(--navy-930); }
 .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+
+/* 이런 병원에 필요합니다 블록 */
+.needBlock {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-top: 28px;
+  box-shadow: var(--shadow2);
+}
+.needTitle {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gold-deep);
+  margin: 0 0 16px;
+  letter-spacing: 0.01em;
+}
+.needList {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+.needList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: #3a4550;
+  line-height: 1.5;
+}
+.needDot {
+  flex-shrink: 0;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-top: 6px;
+}
 .note {
   background: #fff;
   border: 1px solid var(--line);
@@ -572,7 +734,47 @@ footer {
 .fadeIn { animation: fadeIn 0.6s ease both; }
 
 /* Responsive */
+/* ── 네비게이션 모바일/데스크톱 분기 ── */
+.navMobileRight { display: none; }
+.hamburger {
+  background: none; border: none; cursor: pointer;
+  color: var(--gold); padding: 4px; display: flex; align-items: center;
+}
+
+/* 모바일 드로어 */
+.mobileDrawer {
+  position: fixed; inset: 0; background: rgba(4,12,24,0.7);
+  z-index: 999; backdrop-filter: blur(4px);
+}
+.mobileDrawerInner {
+  position: absolute; top: 64px; right: 0; left: 0;
+  background: var(--navy-950); border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 24px 20px 32px;
+}
+.mobileDrawerLinks {
+  display: flex; flex-direction: column; gap: 0;
+}
+.mobileDrawerLinks a {
+  display: block; padding: 16px 0;
+  font-size: 17px; font-weight: 600; color: var(--ivory);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  cursor: pointer; text-decoration: none;
+}
+.mobileDrawerLinks a:last-child { border-bottom: none; }
+.mobileCtaBtn {
+  margin-top: 20px; justify-content: center;
+  width: 100%; display: flex !important;
+}
+
+/* compact 언어 스위처 */
+.langSwitcherCompact .langBtn {
+  padding: 4px 8px; font-size: 11px; font-weight: 700;
+}
+
+/* 태블릿 */
 @media (max-width: 1080px) {
+  .pricingCards { grid-template-columns: 1fr; }
+  .pricingTwoCol { grid-template-columns: 1fr; }
   .heroIn { grid-template-columns: 1fr; }
   .heroVisual { grid-template-columns: 1fr 1fr; }
   .productBlock { grid-template-columns: 1fr; }
@@ -588,13 +790,128 @@ footer {
   .metricItem:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
   .metricItem:last-child { border-bottom: none; }
 }
+
+/* 모바일 */
 @media (max-width: 720px) {
+  /* 네비 */
+  .navDesktop { display: none; }
+  .navMobileRight { display: flex; align-items: center; }
+  .navin { padding: 0 20px; height: 60px; }
+  .nav { height: 60px; }
+  .brand { gap: 10px; font-size: 15px; }
+  .brand small { display: none; }
+  .mark { width: 34px; height: 34px; border-radius: 11px; }
+
+  /* 레이아웃 */
+  .wrap { padding: 0 8px; }
+  section { padding: 60px 0; }
+
+  /* 히어로 */
+  h1 { font-size: 32px; line-height: 1.2; }
+  .heroIn { padding: 48px 0 60px; gap: 32px; }
   .heroVisual { grid-template-columns: 1fr; }
-  .valueGrid { grid-template-columns: 1fr; }
-  .navlinks a:not(.btn) { display: none; }
-  h1 { font-size: 36px; }
-  .heroIn { padding: 54px 0 90px; }
-  .notes { grid-template-columns: 1fr; }
+  .heroVisual .visualCard:last-child { display: none; }
+  .heroBtns { flex-direction: column; gap: 12px; }
+  .heroBtns .btn { width: 100%; justify-content: center; }
+  .heroChecks { gap: 12px; }
+
+  /* 섹션 헤드 */
+  .sectionHead h2 { font-size: 26px; }
+  .sectionHead p { font-size: 15px; }
+
+  /* 제품 블록 */
+  .productBlock { grid-template-columns: 1fr; gap: 28px; }
+  .productBlock h3 { font-size: 24px; }
+  .imagePanel { padding: 8px; }
+
+  /* 프로세스 */
+  .processGrid { flex-direction: column; }
+  .processRow { flex-direction: column; width: 100%; }
+  .stepArrow { padding: 6px 0; padding-left: 48px; transform: rotate(90deg); }
   .metricsBar { grid-template-columns: 1fr; }
-  .metricItem { border-right: none !important; }
+  .metricItem { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .metricItem:last-child { border-bottom: none; }
+
+  /* 가치/비교 카드 */
+  .valueGrid { grid-template-columns: 1fr; }
+
+  /* 테이블 — 기본: 스크롤 없이 */
+  .tableWrap { overflow-x: visible; }
+  table { min-width: 0; width: 100%; font-size: 13px; }
+  th, td { padding: 8px 8px; }
+
+  /* 패키지·클리닉 테이블 → 카드 레이아웃 */
+  .tableWrapPkg table,
+  .tableWrapClinic table { display: block; }
+  .tableWrapPkg thead,
+  .tableWrapClinic thead { display: none; }
+  .tableWrapPkg tbody,
+  .tableWrapClinic tbody { display: flex; flex-direction: column; gap: 10px; }
+  .tableWrapPkg tr,
+  .tableWrapClinic tr {
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: #f4f1ea; border-radius: 10px;
+    padding: 12px 14px; gap: 8px 16px;
+  }
+  .tableWrapPkg td,
+  .tableWrapClinic td {
+    display: flex; flex-direction: column; padding: 0;
+    font-size: 13px; border: none;
+  }
+  .tableWrapPkg td::before,
+  .tableWrapClinic td::before {
+    content: attr(data-label);
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  /* 패키지 — 체어수를 전체 너비 헤더로 */
+  .tableWrapPkg td:first-child {
+    grid-column: 1 / -1;
+    font-size: 16px; font-weight: 700; color: var(--navy-930);
+    border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 8px; margin-bottom: 4px;
+  }
+  .tableWrapPkg td:first-child::before { display: none; }
+  /* 얼리파트너 가격 강조 */
+  .tableWrapPkg td.tdHighlight {
+    grid-column: 1 / -1; font-size: 18px;
+  }
+  /* 클리닉 — 병원명 전체 너비 */
+  .tableWrapClinic td:first-child {
+    grid-column: 1 / -1; font-size: 15px; font-weight: 700;
+    color: var(--navy-930); border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 8px; margin-bottom: 4px;
+  }
+  .tableWrapClinic td:first-child::before { display: none; }
+
+  /* 요금 */
+  .pricingCards { grid-template-columns: 1fr; }
+  .pricingTwoCol { grid-template-columns: 1fr; }
+  .pricingCard { padding: 24px 20px; }
+  .pricingCardPrice { font-size: 28px; }
+
+  /* CTA */
+  .cta h2 { font-size: 24px; }
+  .actions { flex-direction: column; gap: 12px; }
+  .actions .btn { width: 100%; justify-content: center; }
+
+  /* 노트 */
+  .notes { grid-template-columns: 1fr; }
+  .needList { grid-template-columns: 1fr; }
+  .needBlock { padding: 20px 16px; }
+
+  /* 드로어 언어 스위처 */
+  .mobileDrawerLang {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .mobileDrawerLang .langSwitcher {
+    justify-content: flex-start; gap: 8px;
+  }
+  .mobileDrawerLang .langBtn {
+    font-size: 13px; padding: 6px 14px;
+  }
+
+  /* 푸터 */
+  footer { font-size: 12px; text-align: center; }
 }
