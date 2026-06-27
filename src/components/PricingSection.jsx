@@ -8,12 +8,12 @@ const item = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, trans
 
 const PKG_ROWS = {
   ko: [
-    { chair: '3', monitor: '29만 원', consult: '50만 원', sum: '79만 원', regular: '69만 원', special: '59만 원' },
-    { chair: '4', monitor: '32만 원', consult: '50만 원', sum: '82만 원', regular: '72만 원', special: '62만 원' },
-    { chair: '5', monitor: '35만 원', consult: '50만 원', sum: '85만 원', regular: '75만 원', special: '65만 원' },
-    { chair: '6', monitor: '38만 원', consult: '50만 원', sum: '88만 원', regular: '78만 원', special: '68만 원' },
-    { chair: '7', monitor: '41만 원', consult: '50만 원', sum: '91만 원', regular: '81만 원', special: '71만 원' },
-    { chair: '8', monitor: '44만 원', consult: '50만 원', sum: '94만 원', regular: '84만 원', special: '74만 원' },
+    { chair: '3', monitor: '35만 원', consult: '60만 원', sum: '95만 원', regular: '85만 원', special: '75만 원' },
+    { chair: '4', monitor: '40만 원', consult: '60만 원', sum: '100만 원', regular: '90만 원', special: '80만 원' },
+    { chair: '5', monitor: '45만 원', consult: '60만 원', sum: '105만 원', regular: '95만 원', special: '85만 원' },
+    { chair: '6', monitor: '50만 원', consult: '60만 원', sum: '110만 원', regular: '100만 원', special: '90만 원' },
+    { chair: '7', monitor: '55만 원', consult: '60만 원', sum: '115만 원', regular: '105만 원', special: '95만 원' },
+    { chair: '8', monitor: '60만 원', consult: '60만 원', sum: '120만 원', regular: '110만 원', special: '100만 원' },
   ],
   en: [
     { chair: '3', monitor: '$220', consult: '$375', sum: '$595', regular: '$520', special: '$450' },
@@ -35,11 +35,11 @@ const PKG_ROWS = {
 
 const CLINIC_ROWS = {
   ko: [
-    ['강남 치과 A', '5', '월 65만 원', '12개월', '상담 전환율 +31%'],
-    ['분당 치과 B', '4', '월 62만 원', '12개월', '설명시간 -40%'],
-    ['홍대 치과 C', '3', '월 59만 원', '12개월', '재방문율 +28%'],
-    ['수원 치과 D', '6', '월 68만 원', '12개월', '전환율 +35%'],
-    ['대구 치과 E', '8', '월 74만 원', '12개월', '리뷰 4.9→5.0'],
+    ['강남 치과 A', '5', '월 85만 원', '12개월', '상담 전환율 +31%'],
+    ['분당 치과 B', '4', '월 80만 원', '12개월', '설명시간 -40%'],
+    ['홍대 치과 C', '3', '월 75만 원', '12개월', '재방문율 +28%'],
+    ['수원 치과 D', '6', '월 90만 원', '12개월', '전환율 +35%'],
+    ['대구 치과 E', '8', '월 100만 원', '12개월', '리뷰 4.9→5.0'],
   ],
   en: [
     ['Gangnam Clinic A', '5', '$490/mo', '12 months', 'Consult conversion +31%'],
@@ -58,7 +58,7 @@ const CLINIC_ROWS = {
 }
 
 const EXAMPLE_VALUES = {
-  ko: { e1: '월 35만 원', e2: '월 50만 원', e3: '월 85만 원', e4: '월 75만 원', e5: '월 65만 원', e6: '300만 원', e7: '0원' },
+  ko: { e1: '월 45만 원', e2: '월 60만 원', e3: '월 105만 원', e4: '월 95만 원', e5: '월 85만 원', e6: '300만 원', e7: '0원' },
   en: { e1: '$265/mo', e2: '$375/mo', e3: '$640/mo', e4: '$565/mo', e5: '$490/mo', e6: '$2,250', e7: '$0' },
   ja: { e1: '月¥39,000', e2: '月¥55,000', e3: '月¥94,000', e4: '月¥83,000', e5: '月¥72,000', e6: '¥330,000', e7: '¥0' },
 }
